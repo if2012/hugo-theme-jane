@@ -84,4 +84,25 @@
   <!-- <a href="http://disqus.com/" class="dsq-brlink" target="_blank">comments powered by <span class="logo-disqus">Disqus</span></a> -->
   </div>
   {{- end }}
+
+<!-- gitalk -->
+  {{- if .Site.Params.gitalk.owner -}}
+  <div id="gitalk-container"></div>
+    {{ .Site.Params.publicCDN.gitalkCSS | safeHTML }}
+    {{ .Site.Params.publicCDN.gitalkJS | safeHTML }}
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '{{ .Date }}',
+    title: '{{ .Title }}',
+    clientID: '{{ .Site.Params.gitalk.clientId }}',
+    clientSecret: '{{ .Site.Params.gitalk.clientSecret }}',
+    repo: '{{ .Site.Params.gitalk.repo }}',
+    owner: '{{ .Site.Params.gitalk.owner }}',
+    admin: ['{{ .Site.Params.gitalk.owner }}'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+  {{- end }}
 {{- end }}
