@@ -59,7 +59,7 @@
 
   <!-- Disqus -->
   {{- if .Site.DisqusShortname -}}
-  {{- if site.lazy_load_disqus -}}
+  {{- if .Site.DisqusLazyLoad -}}
   <div class="disqus-comment">
   <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
     {{ i18n "loadDisqus" }}
